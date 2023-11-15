@@ -1,4 +1,5 @@
 package com.example.prueba1evdispmov.ui
+
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -23,7 +24,7 @@ import com.example.prueba1evdispmov.R
 
 @Composable
 fun StartScreen(
-    onSumButtonClicked: () -> Unit,
+    onSumButtonClicked: (Int, Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
     var sum1 by remember { mutableStateOf("") }
@@ -55,9 +56,10 @@ fun StartScreen(
                 .padding(bottom = 32.dp)
                 .fillMaxWidth()
         )
-        SumaButton(
-            onClick = { onSumButtonClicked() }
-        )
+        SumaButton {
+            onSumButtonClicked(sum1.toInt(), sum2.toInt())
+            println("${sum1.toInt() + sum2.toInt()}")
+        }
     }
 }
 
@@ -83,17 +85,20 @@ fun SumaButton(
     onClick: () -> Unit
 ) {
     Button(
-        onClick = onClick,
+        onClick = {
+            onClick()
+        },
     ) {
         Text(stringResource(R.string.sumar))
     }
 }
 
+
 @Preview
 @Composable
 fun StartSumPreview(){
     StartScreen(
-        onSumButtonClicked = { /*TODO*/ },
+        onSumButtonClicked = { sum1, sum2 ->  },
         modifier = Modifier
             .fillMaxSize()
     )

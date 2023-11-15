@@ -3,6 +3,6 @@
     <string name="sumador">Introduce un número</string>
     <string name="sum">Operador</string>
     <string name="operaciones">Operaciones realizadas:</string>
-    <string name="sumar">+</string>
+    <string name="sumar">Sumar</string>
     <string name="volver">Volver</string>
 </resources>
