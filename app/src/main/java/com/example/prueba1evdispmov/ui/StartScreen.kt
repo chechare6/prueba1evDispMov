@@ -91,8 +91,6 @@ fun SumaButton(
         Text(stringResource(R.string.sumar))
     }
 }
-
-
 @Preview
 @Composable
 fun StartSumPreview(){
