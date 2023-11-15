@@ -30,7 +30,9 @@
                 composable(route = SumadoraScreen.Start.name){
                     StartScreen(
                         onSumButtonClicked = { sum1, sum2 ->
-                        navController.navigate(SumadoraScreen.Operador.name)
+                        navController.navigate("${SumadoraScreen.Operador.name}?sum1=$sum1&sum2=$sum2") {
+
+                        }
                     },
                         modifier = Modifier
                             .fillMaxSize()
@@ -38,8 +40,12 @@
                     )
                 }
 
-                composable(route = SumadoraScreen.Operador.name){
+                composable(route = "${SumadoraScreen.Operador.name}?sum1={sum1}&sum2={sum2}") { backStackEntry ->
+                    val sum1 = backStackEntry.arguments?.getString("sum1")?.toInt() ?: 0
+                    val sum2 = backStackEntry.arguments?.getString("sum2")?.toInt() ?: 0
                     OperadorScreen(
+                        sum1 = sum1,
+                        sum2 = sum2,
                         onBackButtonClicked = {
                         navController.navigate(SumadoraScreen.Start.name)
                         },

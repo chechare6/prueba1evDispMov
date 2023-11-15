@@ -58,7 +58,6 @@ fun StartScreen(
         )
         SumaButton {
             onSumButtonClicked(sum1.toInt(), sum2.toInt())
-            println("${sum1.toInt() + sum2.toInt()}")
         }
     }
 }

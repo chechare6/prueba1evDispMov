@@ -17,12 +17,13 @@ import com.example.prueba1evdispmov.R
 
 @Composable
 fun OperadorScreen(
+    sum1: Int,
+    sum2: Int,
     onBackButtonClicked: () -> Unit,
     modifier: Modifier
 ) {
-    val sum1 = 0
-    val sum2 = 0
-    val operacion = "$sum1 + $sum2 = $(sum1 + sum2)"
+
+    val operacion = "$sum1 + $sum2 = ${sum1 + sum2}"
     
     Column {
         Text(
@@ -55,6 +56,9 @@ fun BackButton(
 @Preview
 @Composable
 fun OperadorScreenPreview(){
-    OperadorScreen(onBackButtonClicked = { /*TODO*/ },
+    OperadorScreen(
+        sum1 = 5,
+        sum2 = 3,
+        onBackButtonClicked = { /*TODO*/ },
         modifier = Modifier.fillMaxSize())
 }
