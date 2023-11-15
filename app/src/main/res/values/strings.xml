@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Prueba1evDispMov</string>
+    <string name="sumador">Introduce un número</string>
+    <string name="sum">Operador</string>
+    <string name="operaciones">Operaciones realizadas:</string>
 </resources>
