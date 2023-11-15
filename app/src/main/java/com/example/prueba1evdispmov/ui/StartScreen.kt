@@ -1,28 +1,33 @@
 package com.example.prueba1evdispmov.ui
-
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.prueba1evdispmov.R
 
 @Composable
 fun StartScreen(
     onSumButtonClicked: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
-    var sum1 = 0
-    var sum2 = 0
+    var sum1 by remember { mutableStateOf("") }
+    var sum2 by remember { mutableStateOf("") }
     Column {
         Text(
             text = stringResource(R.string.sumador),
@@ -31,8 +36,8 @@ fun StartScreen(
                 .align(alignment = Alignment.Start)
         )
         EditNumberField(
-            value = sum1.toString(),
-            onValueChanged = { sum1 = it.toInt() },
+            value = sum1,
+            onValueChanged = { sum1 = it },
             modifier = Modifier
                 .padding(bottom = 32.dp)
                 .fillMaxWidth()
@@ -44,8 +49,8 @@ fun StartScreen(
                 .align(alignment = Alignment.Start)
         )
         EditNumberField(
-            value = sum2.toString(),
-            onValueChanged = { sum2 = it.toInt() },
+            value = sum2,
+            onValueChanged = { sum2 = it },
             modifier = Modifier
                 .padding(bottom = 32.dp)
                 .fillMaxWidth()
@@ -75,11 +80,21 @@ fun EditNumberField(
 
 @Composable
 fun SumaButton(
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier
+    onClick: () -> Unit
 ) {
     Button(
         onClick = onClick,
-        modifier = modifier.widthIn(min = 250.dp)
-    ) {}
+    ) {
+        Text(stringResource(R.string.sumar))
+    }
+}
+
+@Preview
+@Composable
+fun StartSumPreview(){
+    StartScreen(
+        onSumButtonClicked = { /*TODO*/ },
+        modifier = Modifier
+            .fillMaxSize()
+    )
 }

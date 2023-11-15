@@ -15,7 +15,8 @@ import com.example.prueba1evdispmov.R
 
 @Composable
 fun OperadorScreen(
-    onBackButtonClicked: () -> Unit
+    onBackButtonClicked: () -> Unit,
+    modifier: Modifier
 ) {
     val sum1 = 0
     val sum2 = 0
@@ -44,5 +45,7 @@ fun BackButton(
     ) {
     Button(onClick = onClick,
         modifier = modifier.widthIn(min = 250.dp)
-    ) {}
+    ) {
+        Text(stringResource(R.string.volver))
+    }
 }
